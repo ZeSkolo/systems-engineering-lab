@@ -1,0 +1,80 @@
+use_default_settings: true
+
+general:
+  instance_name: "Private Meta-Search"
+  enable_metrics: false
+  debug: false
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  default_lang: "en"
+  formats:
+    - html
+    - json
+
+server:
+  secret_key: "change-me-to-a-long-random-string"
+  limiter: true
+  image_proxy: true
+  method: "GET"
+  base_url: true
+
+redis:
+  url: redis://redis:6379/0
+
+ui:
+  static_use_hash: true
+  default_theme: simple
+  query_in_title: false
+  infinite_scroll: false
+
+outgoing:
+  request_timeout: 4.0
+  max_request_timeout: 8.0
+  pool_connections: 100
+  pool_maxsize: 20
+  enable_http2: true
+  # Do not forward client IP / User-Agent fingerprints upstream.
+  extra_proxy_timeout: 2.0
+
+enabled_plugins:
+  - "Hash plugin"
+  - "Self Information"
+  - "Tracker URL remover"
+  - "Hostnames plugin"
+
+hostnames:
+  replace: {}
+  remove:
+    - "(.*\\.)?doubleclick\\.net$"
+    - "(.*\\.)?google-analytics\\.com$"
+    - "(.*\\.)?googletagmanager\\.com$"
+    - "(.*\\.)?facebook\\.com$"
+    - "(.*\\.)?scorecardresearch\\.com$"
+
+engines:
+  - name: duckduckgo
+    engine: duckduckgo
+    shortcut: ddg
+  - name: brave
+    engine: brave
+    shortcut: br
+  - name: google
+    engine: google
+    shortcut: g
+  - name: bing
+    engine: bing
+    shortcut: b
+  - name: wikipedia
+    engine: wikipedia
+    shortcut: wp
+  - name: github
+    engine: github
+    shortcut: gh
+  - name: stackoverflow
+    engine: stackoverflow
+    shortcut: st
+  - name: arxiv
+    engine: arxiv
+    shortcut: arx
