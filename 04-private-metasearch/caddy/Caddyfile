@@ -1,0 +1,14 @@
+search.example.com {
+    encode gzip
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy no-referrer
+        Permissions-Policy interest-cohort=()
+        -Server
+    }
+    reverse_proxy searxng:8080 {
+        header_up X-Real-IP ""
+        header_up X-Forwarded-For ""
+    }
+}
