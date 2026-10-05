@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+*.db
+.env
+05-c-compiler/minic
+03-self-learning-agents/data/
+certs/
