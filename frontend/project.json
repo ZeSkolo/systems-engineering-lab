@@ -1,0 +1,164 @@
+{
+  "repo": "systems-engineering-lab",
+  "title": "Systems lab",
+  "subtitle": "Five systems. One workspace inside this repository. Explore each original implementation.",
+  "tools": [
+    {
+      "id": "redis",
+      "kind": "redis",
+      "title": "Key-value console",
+      "description": "Use the original Python Redis runtime, with real values and expiry.",
+      "actions": [
+        {
+          "id": "command",
+          "label": "Run command",
+          "fields": [
+            {
+              "key": "command",
+              "label": "Redis command",
+              "type": "text",
+              "value": "PING",
+              "hint": "Try SET greeting hello EX 60, then GET greeting."
+            }
+          ]
+        },
+        {
+          "id": "keys",
+          "label": "Inspect keys",
+          "fields": []
+        }
+      ],
+      "base": "01-redis-java"
+    },
+    {
+      "id": "database",
+      "kind": "database",
+      "title": "SQL workspace",
+      "description": "Query the original slotted-page and B+ tree engine. One statement per request.",
+      "actions": [
+        {
+          "id": "execute",
+          "label": "Run SQL",
+          "fields": [
+            {
+              "key": "sql",
+              "label": "SQL statement",
+              "type": "textarea",
+              "value": "CREATE TABLE users (id INT, name TEXT, score INT);",
+              "hint": "Next: INSERT INTO users VALUES (1, 'Ada', 10); then SELECT * FROM users;"
+            }
+          ],
+          "note": "CREATE, INSERT, DELETE and DROP change your local UI database."
+        },
+        {
+          "id": "stats",
+          "label": "Storage stats",
+          "fields": []
+        }
+      ],
+      "base": "02-database-engine"
+    },
+    {
+      "id": "agent",
+      "kind": "agent",
+      "title": "Memory chat",
+      "description": "Talk to the repository\u2019s offline heuristic agent. Memories persist locally.",
+      "actions": [
+        {
+          "id": "chat",
+          "label": "Send message",
+          "fields": [
+            {
+              "key": "message",
+              "label": "Your message",
+              "type": "textarea",
+              "value": "My name is Ada",
+              "hint": "Try \u201cWhat is my name?\u201d after saving a fact."
+            }
+          ]
+        },
+        {
+          "id": "recall",
+          "label": "Recall memory",
+          "fields": [
+            {
+              "key": "message",
+              "label": "Memory search",
+              "type": "text",
+              "value": "name"
+            }
+          ]
+        }
+      ],
+      "base": "03-self-learning-agents"
+    },
+    {
+      "id": "search",
+      "kind": "search",
+      "title": "Private search",
+      "description": "Search the educational catalog, or add live Wikipedia results.",
+      "actions": [
+        {
+          "id": "search",
+          "label": "Search",
+          "fields": [
+            {
+              "key": "query",
+              "label": "Search query",
+              "type": "text",
+              "value": "B+ tree"
+            },
+            {
+              "key": "mode",
+              "label": "Search engines",
+              "type": "select",
+              "value": "offline",
+              "options": [
+                {
+                  "value": "offline",
+                  "label": "Offline catalog"
+                },
+                {
+                  "value": "live",
+                  "label": "Catalog + live Wikipedia"
+                }
+              ]
+            }
+          ],
+          "note": "Offline results are a fixed educational corpus, not live web search. Live mode needs internet access."
+        }
+      ],
+      "base": "04-private-metasearch"
+    },
+    {
+      "id": "compiler",
+      "kind": "compiler",
+      "title": "Compiler studio",
+      "description": "Compile C into real x86-64 assembly with this repository\u2019s minic compiler.",
+      "actions": [
+        {
+          "id": "compile",
+          "label": "Compile to assembly",
+          "fields": [
+            {
+              "key": "source",
+              "label": "C source",
+              "type": "textarea",
+              "value": "int main() {\n  return 6 * 7;\n}"
+            }
+          ],
+          "note": "Compilation only. Submitted programs are never executed. GCC and Make are required."
+        },
+        {
+          "id": "examples",
+          "label": "Browse examples",
+          "fields": []
+        }
+      ],
+      "base": "05-c-compiler"
+    }
+  ],
+  "previews": [],
+  "runtime": "Original bundled engines \u00b7 Python Redis twin + heuristic agent \u00b7 Compiler needs GCC + Make",
+  "port": 8107
+}

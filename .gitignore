@@ -5,3 +5,8 @@ __pycache__/
 05-c-compiler/minic
 03-self-learning-agents/data/
 certs/
+
+# Local frontend runtime
+.web-data/
+__pycache__/
+*.pyc
